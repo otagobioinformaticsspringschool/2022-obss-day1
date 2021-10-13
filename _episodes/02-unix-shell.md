@@ -41,6 +41,7 @@ Open up a terminal
 ~~~
 [matt.bixley@wbg004 nesi02659]$
 ~~~
+{: .bash}
 
 The dollar sign is a **prompt**, which shows us that the shell is waiting for input;
 your shell may use a different character as a prompt and may add information before
@@ -62,6 +63,7 @@ which is the top level directory within our cloud system:
 $ pwd
 /scale_wlg_persistent/filesets/project/nesi02659
 ~~~
+{: .bash}
 
 
 Let's look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`,
@@ -69,7 +71,10 @@ which stands for "listing":
 
 ~~~
 $ ls
+~~~
+{: .bash}
 
+~~~
 14417834         fastqcmultiqc_html  MGSS_2020_MikeH_test  safe             Untitled2.ipynb  Untitled4.ipynb  Untitled.ipynb
 checkv.err       ga4gh               MGSS_resources_2020   SEPT28           untitled2.md     untitled4.md     untitled.md
 checkv.out       ga4gh-example-1     MGSS_U                source_data      untitled2.txt    untitled4.txt    untitled.txt
@@ -77,6 +82,7 @@ checkv.sl        gateach             newcounts.txt         Untitled1.ipynb  Unti
 dc_workshop      Kegg_dat.ipynb      obss_2020             untitled1.md     untitled3.md     untitled5.txt    workflow_workshop
 Ex16_afar.ipynb  MGSS_2020           RNA-seq.ipynb         untitled1.txt    untitled3.txt    untitled6.txt    yeast_counts_all_chr.txt
 ~~~
+{: .output}
 
 `ls` prints the names of the files and directories in the current directory in
 alphabetical order,
@@ -88,7 +94,7 @@ To get our shell data into our home directory
 ~~~
 cp -r  /nesi/nobackup/nesi02659/shell_data/ ./
 ~~~
-
+{: .bash}
 ---
 ## Navigating Files and Directories
 
@@ -102,6 +108,7 @@ use the following command to get there:
 ~~~
 $ cd shell_data
 ~~~
+{: .bash}
 
 Let's look at what is in this directory:
 
@@ -110,8 +117,13 @@ which tells `ls` to add a trailing `/` to the names of directories:
 
 ~~~
 $ ls -F
+~~~
+{: .bash}
+
+~~~
 sra_metadata/  untrimmed_fastq/
 ~~~
+{: .output}
 
 Anything with a "/" after it is a directory. Things with a "*" after them are programs. If
 there are no decorations, it's a file.
@@ -121,6 +133,8 @@ We have a special command to tell the computer to move us back or up one directo
 ~~~
 $ cd ..
 ~~~
+{: .bash}
+
 ---
 ## Full vs. Relative Paths
 
@@ -135,12 +149,14 @@ command.
 $ cd  
 $ pwd  
 ~~~
+{: .bash}
 
 You will see: 
 
 ~~~
 /home/yourname
 ~~~
+{: .output}
 
 This is the full name of your home directory. This tells you that you
 are in a directory called `dcuser`, which sits inside a directory called
@@ -155,6 +171,7 @@ Now enter the following command:
 ~~~
 $ cd /home/yourname/shell_data/.hidden
 ~~~
+{: .bash}
 
 This jumps forward multiple levels to the `.hidden` directory. 
 Now go back to the home directory with `cd` or `cd ~`
@@ -162,12 +179,14 @@ Now go back to the home directory with `cd` or `cd ~`
 ~~~
 $ cd
 ~~~
+{: .bash}
 
 You can also navigate to the `.hidden` directory using:
 
 ~~~
 $ cd shell_data/.hidden
 ~~~
+{: .bash}
 
 These two commands have the same effect, they both take us to the `.hidden` directory.
 The first uses the absolute path, giving the full address from the home directory. The
@@ -194,6 +213,7 @@ Enter the following command from within the `untrimmed_fastq` directory:
 ~~~
 $ cat SRR098026.fastq
 ~~~
+{: .bash}
 
 This will print out all of the contents of the `SRR098026.fastq` to the screen.
 
@@ -228,7 +248,10 @@ the beginning and end of a file, respectively.
 
 ~~~
 $ head SRR098026.fastq
+~~~
+{: .bash}
 
+~~~
 @SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
 NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
 +SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
@@ -240,10 +263,14 @@ NNNNNNNNNNNNNNNNANNNNNNNNNNNNNNNNNN
 @SRR098026.3 HWUSI-EAS1599_1:2:1:0:570 length=35
 NNNNNNNNNNNNNNNNANNNNNNNNNNNNNNNNNN
 ~~~
+{: .output}
 
 ~~~
 $ tail SRR098026.fastq
+~~~
+{: .bash}
 
+~~~
 +SRR098026.247 HWUSI-EAS1599_1:2:1:2:1311 length=35
 #!##!#################!!!!!!!######
 @SRR098026.248 HWUSI-EAS1599_1:2:1:2:118 length=35
@@ -255,21 +282,30 @@ CNCTNTATGCGTACGGCAGTGANNNNNNNGGAGAT
 +SRR098026.249 HWUSI-EAS1599_1:2:1:2:1057 length=35
 A!@B!BBB@ABAB#########!!!!!!!######
 ~~~
+{: .output}
 
 The `-n` option to either of these commands can be used to print the
 first or last `n` lines of a file. 
 
 ~~~
 $ head -n 1 SRR098026.fastq
+~~~
+{: .bash}
 
+~~~
 @SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
 ~~~
+{: .output}
 
 ~~~
 $ tail -n 1 SRR098026.fastq
+~~~
+{: .bash}
 
+~~~
 A!@B!BBB@ABAB#########!!!!!!!######
 ~~~
+{: .output}
 
 ---
 ## Copying Files
@@ -285,9 +321,13 @@ Navigate to the `shell_data/untrimmed_fastq` directory and enter:
 ~~~
 $ cp SRR098026.fastq SRR098026-copy.fastq
 $ ls -F
+~~~
+{: .bash}
 
+~~~
 SRR097977.fastq  SRR098026-copy.fastq  SRR098026.fastq
 ~~~
+{: .output}
 
 ## Creating Directories
 
@@ -297,6 +337,7 @@ followed by a space, then the directory name you want to create:
 ~~~
 $ mkdir backup
 ~~~
+{: .bash}
 
 ## Moving 
 
@@ -306,9 +347,13 @@ move files around using the command `mv`:
 ~~~
 $ mv SRR098026-copy.fastq backup
 $ ls backup
+~~~
+{: .bash}
 
+~~~
 SRR098026-copy.fastq
 ~~~
+{: .output}
 
 The `mv` command is also how you rename files. Let's rename this file to make it clear that this is a backup:
 
@@ -316,9 +361,13 @@ The `mv` command is also how you rename files. Let's rename this file to make it
 $ cd backup
 $ mv SRR098026-copy.fastq SRR098026-backup.fastq
 $ ls
+~~~
+{: .bash}
 
+~~~
 SRR098026-backup.fastq
 ~~~
+{: .output}
 
 ---
 ## Redirection/Pipes
@@ -329,12 +378,14 @@ search within files without even opening them, using `grep`. We can then send wh
 ~~~
 $ cd ~/shell_data/untrimmed_fastq
 ~~~
+{: .bash}
 
 Suppose we want to see how many reads in our file have really bad segments containing 10 consecutive unknown nucleotides (Ns).
 Let's search for the string NNNNNNNNNN in the SRR098026 file:
 ~~~
 $ grep NNNNNNNNNN SRR098026.fastq
 ~~~
+{: .bash}
 
 One of the sets of lines returned by this command is: 
 ~~~
@@ -343,6 +394,7 @@ CNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 +SRR098026.177 HWUSI-EAS1599_1:2:1:1:2025 length=35
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ~~~
+{: .output}
 
 We can use the `-B` argument for grep to return a specific number of lines before
 each match. The `-A` argument returns a specific number of lines after each matching line. Here we want the line *before* and the two lines *after* each 
@@ -351,6 +403,7 @@ matching line, so we add `-B1 -A2` to our grep command:
 ~~~
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq
 ~~~
+{: .bash}
 
 The command for redirecting output to a file is `>`.
 
@@ -361,13 +414,18 @@ in our FASTQ files that contain
 ~~~
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.txt
 ~~~
+{: .bash}
 
 We can then see how many bad read we have
 ~~~
 $ wc -l bad_reads.txt
+~~~
+{: .bash}
 
+~~~
 537 bad_reads.txt
 ~~~
+{: .output}
 
 We created the files to store the reads and then counted the lines in 
 the file to see how many reads matched our criteria. There's a way to do this, however, that
@@ -387,6 +445,7 @@ from our `grep` call through the `less` command.
 ~~~
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq | wc -l 
 ~~~
+{: .bash}
 
 ---
 ## Variables
@@ -396,14 +455,24 @@ A variable is a method to store information eg a list, and use it again (or seve
 ~~~
 $ foo=abc
 $ echo foo is $foo
+~~~
+{: .bash}
+
+~~~
 foo is abc
 ~~~
+{: .output}
 
 We can add to a variable with curly brackets `{}`
 ~~~
 $ echo foo is ${foo}EFG
+~~~
+{: .bash}
+
+~~~
 foo is abcEFG
 ~~~
+{: .output}
 
 ---
 ## Writing for loops
@@ -424,6 +493,7 @@ Let's write a for loop to show us the first two lines of the fastq files we down
 ~~~
 $ cd ../untrimmed_fastq/
 ~~~
+{: .bash}
 
 ~~~
 $ for filename in *.fastq
@@ -431,6 +501,7 @@ $ for filename in *.fastq
 > head -n 2 ${filename}
 > done
 ~~~
+{: .bash}
 
 The for loop begins with the formula `for <variable> in <group to iterate over>`. In this case, the word `filename` is designated 
 as the variable to be used over each iteration. In our case `SRR097977.fastq` and `SRR098026.fastq` will be substituted for `filename` 
@@ -447,6 +518,7 @@ $ for filename in *.fastq
 > head -n 2 ${filename} >> seq_info.txt
 > done
 ~~~
+{: .bash}
 
 When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using
 
@@ -464,20 +536,26 @@ every time the loop iterates, so it would only have text from the last variable 
 ~~~
 $ basename SRR097977.fastq .fastq
 ~~~
+{: .bash}
 
 We see that this returns just the SRR accession, and no longer has the .fastq file extension on it.
 
 ~~~
 SRR097977
 ~~~
+{: .output}
 
 If we try the same thing but use `.fasta` as the file extension instead, nothing happens. This is because basename only works when it exactly matches a string in the file.
 
 ~~~
 $ basename SRR097977.fastq .fasta
+~~~
+{: .bash}
 
+~~~
 SRR097977.fastq
 ~~~
+{: .output}
 
 Basename is really powerful when used in a for loop. It allows to access just the file prefix, which you can use to name things. Let's try this.
 
@@ -490,6 +568,7 @@ $ for filename in *.fastq
 > echo ${name}
 > done
 ~~~
+{: .bash}
 
 One way this is really useful is to move files. Let's rename all of our .txt files using `mv` so that they have the years on them, which will document when we created them. 
 
@@ -500,7 +579,7 @@ $ for filename in *.txt
 > mv ${filename}  ${name}_2019.txt
 > done
 ~~~
-
+{: .bash}
 
 
 {% include links.md %}
