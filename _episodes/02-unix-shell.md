@@ -36,17 +36,22 @@ Many bioinformatics tools can only be used through a command line interface, or 
 
 In this lesson you will learn how to use the command line interface to move around in your file system.
 
-Open up a terminal
+Open up a terminal in Juypter.
 
-~~~
-[matt.bixley@wbg004 nesi02659]$
-~~~
-{: .bash}
+```bash
+[matt.bixley@wbg004 ~/.jupyter/jobs/22861436] $
+```
+
+
+> Note you will automatically start off in a directory related to the slurm job running your Jupyter session e.g. `~/.jupyter/jobs/22861436`
+{: .callout}
 
 The dollar sign is a **prompt**, which shows us that the shell is waiting for input;
 your shell may use a different character as a prompt and may add information before
 the prompt. When typing commands, either from these lessons or from other sources,
 do not type the prompt, only the commands that follow it.
+
+
 
 Let's find out where we are by running a command called `pwd`
 (which stands for "print working directory").
@@ -55,62 +60,123 @@ is our current default directory,
 i.e.,
 the directory that the computer assumes we want to run commands in,
 unless we explicitly specify something else.
-Here,
-the computer's response is `/home/yourname`,
-which is the top level directory within our cloud system:
+Here, the computer's response is `/home/yourname/.jupyter/jobs/yourjobid`,
+ name and the number you see will be different and relates to your username and the 
+ specific Jupyter session running on NeSI.
+
+```bash
+$ pwd
+```
+
 
 ~~~
-$ pwd
-/scale_wlg_persistent/filesets/project/nesi02659
+/home/matt.bixley/.jupyter/jobs/22861436
 ~~~
-{: .bash}
+{: .output}
 
 
 Let's look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`,
 which stands for "listing":
 
-~~~
+```bash
 $ ls
-~~~
-{: .bash}
+```
+
 
 ~~~
-14417834         fastqcmultiqc_html  MGSS_2020_MikeH_test  safe             Untitled2.ipynb  Untitled4.ipynb  Untitled.ipynb
-checkv.err       ga4gh               MGSS_resources_2020   SEPT28           untitled2.md     untitled4.md     untitled.md
-checkv.out       ga4gh-example-1     MGSS_U                source_data      untitled2.txt    untitled4.txt    untitled.txt
-checkv.sl        gateach             newcounts.txt         Untitled1.ipynb  Untitled3.ipynb  Untitled5.ipynb  viz_thang.sh
-dc_workshop      Kegg_dat.ipynb      obss_2020             untitled1.md     untitled3.md     untitled5.txt    workflow_workshop
-Ex16_afar.ipynb  MGSS_2020           RNA-seq.ipynb         untitled1.txt    untitled3.txt    untitled6.txt    yeast_counts_all_chr.txt
+home  nesi02659  nobackup_nesi02659
 ~~~
 {: .output}
 
 `ls` prints the names of the files and directories in the current directory in
 alphabetical order,
 arranged neatly into columns. 
-We'll be working within the `shell_data` subdirectory, and creating new subdirectories, throughout this workshop.  
 
-To get our shell data into our home directory
+We can also add flags to our commands which will *modify* the behaviour of the command.
+
+```bash
+$ ls -l
+```
 
 ~~~
-cp -r  /nesi/nobackup/nesi02659/shell_data/ ./
+total 3
+lrwxrwxrwx 1 matt.bixley matt.bixley 19 Oct 18 21:02 home -> /home/matt.bixley
+lrwxrwxrwx 1 matt.bixley matt.bixley 23 Oct 18 21:02 nesi02659 -> /nesi/project/nesi02659
+lrwxrwxrwx 1 matt.bixley matt.bixley 24 Oct 18 21:02 nobackup_nesi02659 -> /nesi/nobackup/nesi02659
 ~~~
-{: .bash}
+{: .output}
+
+The `->` in this output tells us that we have some shortcut links in this directory.
+
+- `home` in this case is a short cut to our actual `home` directory
+- `nesi02659` is a shortcut to our project on the nesi filesystem.
+- `nobackup_nesi002659` is a shortcut to project directory that isn't backed up
+
 ---
+
+## Full vs. Relative Paths
+
+Directories can be specified using either a *relative* path or a
+full *absolute* path. The directories on the computer are arranged into a
+hierarchy. The full path tells you where a directory is in that
+hierarchy.
+
+
+- A full path will always start with `/` - also known as the *root*
+- A relative path is the path based on what you can see in your current directory
+
+
+Here is an example of how the workshop directory hierarchy is set up:
+
+```
+/
+|-- home/
+  |-- matt.bixley/
+    |-- obss_2021/
+      |-- enda/
+      |-- gbs/
+      |-- genomic_dna/
+      |-- intro_bash/
+      |-- intro_r/
+      `-- rnaseq/
+
+```
+
+### Home
+
+Your _home_ directory is where your user account lives on the filesystem and is found at `/home/yourname`. Because your home directory special to you, it can also be referred to using `~/` which bash will automatically convert to the full path of `/home/yourname`.
+
 ## Navigating Files and Directories
 
 The command to change locations in our file system is `cd`, followed by a
 directory name to change our working directory.
 `cd` stands for "change directory".
 
-Let's say we want to navigate to the `shell_data` directory we saw above.  We can
-use the following command to get there:
+Lets use `cd` to navigate to our home directory using `~/` to represent our home.
+
+```bash
+$ cd ~/
+$ pwd
+```
 
 ~~~
-$ cd shell_data
+/home/matt.bixley
 ~~~
-{: .bash}
+{: .output}
 
-Let's look at what is in this directory:
+
+> Using `cd` without specifying a directory will by default send you to your home directory
+{: .callout}
+
+This is the full name of your home directory. This tells you that you
+are in a directory called `matt.bixley`, which sits inside a directory called
+`home` which sits inside the very top directory in the hierarchy. The
+very top of the hierarchy is a directory called `/` which is usually
+referred to as the *root directory*. So, to summarize: `matt.bixley` is a
+directory in `home` which is a directory in `/` (_root_). 
+
+
+Let's look at what is in your home directory:
 
 We can make the `ls` output from above, more comprehensible by using the **flag** `-F`,
 which tells `ls` to add a trailing `/` to the names of directories:
@@ -121,74 +187,60 @@ $ ls -F
 {: .bash}
 
 ~~~
-sra_metadata/  untrimmed_fastq/
+obss_2021/
 ~~~
 {: .output}
 
 Anything with a "/" after it is a directory. Things with a "*" after them are programs. If
 there are no decorations, it's a file.
 
+Now lets use a relative path to enter the `obss_2021` directory
+
+```bash
+$ cd obss_2021
+$ pwd
+```
+
+~~~
+/home/matt.bixley/obss_2021
+~~~
+{: .output}
+
 We have a special command to tell the computer to move us back or up one directory level. 
 
-~~~
+```bash
 $ cd ..
-~~~
-{: .bash}
+$ pwd
+```
 
----
-## Full vs. Relative Paths
-
-The `cd` command takes an argument which is a directory
-name. Directories can be specified using either a *relative* path or a
-full *absolute* path. The directories on the computer are arranged into a
-hierarchy. The full path tells you where a directory is in that
-hierarchy. Navigate to the home directory, then enter the `pwd`
-command.
-
-~~~
-$ cd  
-$ pwd  
-~~~
-{: .bash}
-
-You will see: 
+You will see:
 
 ~~~
 /home/yourname
 ~~~
 {: .output}
 
-This is the full name of your home directory. This tells you that you
-are in a directory called `dcuser`, which sits inside a directory called
-`home` which sits inside the very top directory in the hierarchy. The
-very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*. So, to summarize: `dcuser` is a
-directory in `home` which is a directory in `/`. More on `root` and
-`home` in the next section.
-
 Now enter the following command:
 
-~~~
-$ cd /home/yourname/shell_data/.hidden
-~~~
-{: .bash}
+```bash
+$ cd /home/yourname/obss_2021/intro_bash/shell_data/
+```
 
-This jumps forward multiple levels to the `.hidden` directory. 
+
+This jumps forward multiple levels to the `shell_data` directory. 
 Now go back to the home directory with `cd` or `cd ~`
 
-~~~
+```
 $ cd
-~~~
-{: .bash}
+```
 
-You can also navigate to the `.hidden` directory using:
+You can also navigate to the `shell_data` directory using:
 
-~~~
-$ cd shell_data/.hidden
-~~~
-{: .bash}
+```bash
+$ cd obss_2021/intro_bash/shell_data
+```
 
-These two commands have the same effect, they both take us to the `.hidden` directory.
+These two commands have the same effect, they both take us to the `shell_data` directory.
 The first uses the absolute path, giving the full address from the home directory. The
 second uses a relative path, giving only the address from the working directory. A full
 path always starts with a `/`. A relative path does not.
@@ -206,23 +258,21 @@ We now know how to switch directories, run programs, and look at the
 contents of directories, but how do we look at the contents of files?
 
 One way to examine a file is to print out all of the
-contents using the program `cat`. 
+contents using the program `cat`.
 
-Enter the following command from within the `untrimmed_fastq` directory: 
+Enter the following command from within the `untrimmed_fastq` directory:
 
-~~~
+```bash
 $ cat SRR098026.fastq
-~~~
-{: .bash}
+```
 
 This will print out all of the contents of the `SRR098026.fastq` to the screen.
 
 Enter the following command:
 
-~~~
+```bash
 $ less SRR097977.fastq
-~~~
-{: .bash}
+```
 
 Some navigation commands in `less`:
 
@@ -246,10 +296,10 @@ to see the beginning or end of the file, or see how it's formatted.
 The commands are `head` and `tail` and they let you look at
 the beginning and end of a file, respectively.
 
-~~~
+```bash
 $ head SRR098026.fastq
-~~~
-{: .bash}
+```
+
 
 ~~~
 @SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
@@ -265,10 +315,10 @@ NNNNNNNNNNNNNNNNANNNNNNNNNNNNNNNNNN
 ~~~
 {: .output}
 
-~~~
+```bash
 $ tail SRR098026.fastq
-~~~
-{: .bash}
+```
+
 
 ~~~
 +SRR098026.247 HWUSI-EAS1599_1:2:1:2:1311 length=35
@@ -287,20 +337,20 @@ A!@B!BBB@ABAB#########!!!!!!!######
 The `-n` option to either of these commands can be used to print the
 first or last `n` lines of a file. 
 
-~~~
+```bash
 $ head -n 1 SRR098026.fastq
-~~~
-{: .bash}
+```
+
 
 ~~~
 @SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
 ~~~
 {: .output}
 
-~~~
+```bash
 $ tail -n 1 SRR098026.fastq
-~~~
-{: .bash}
+```
+
 
 ~~~
 A!@B!BBB@ABAB#########!!!!!!!######
@@ -318,11 +368,11 @@ First, let's make a copy of one of our FASTQ files using the `cp` command.
 
 Navigate to the `shell_data/untrimmed_fastq` directory and enter:
 
-~~~
+```bash
 $ cp SRR098026.fastq SRR098026-copy.fastq
 $ ls -F
-~~~
-{: .bash}
+```
+
 
 ~~~
 SRR097977.fastq  SRR098026-copy.fastq  SRR098026.fastq
@@ -334,21 +384,19 @@ SRR097977.fastq  SRR098026-copy.fastq  SRR098026.fastq
 The `mkdir` command is used to make a directory. Enter `mkdir`
 followed by a space, then the directory name you want to create:
 
-~~~
+```bash
 $ mkdir backup
-~~~
-{: .bash}
+```
 
-## Moving 
+## Moving
 
 We can now move our backup file to this directory. We can
-move files around using the command `mv`: 
+move files around using the command `mv`:
 
-~~~
+```bash
 $ mv SRR098026-copy.fastq backup
 $ ls backup
-~~~
-{: .bash}
+```
 
 ~~~
 SRR098026-copy.fastq
@@ -357,12 +405,12 @@ SRR098026-copy.fastq
 
 The `mv` command is also how you rename files. Let's rename this file to make it clear that this is a backup:
 
-~~~
+```bash
 $ cd backup
 $ mv SRR098026-copy.fastq SRR098026-backup.fastq
 $ ls
-~~~
-{: .bash}
+```
+
 
 ~~~
 SRR098026-backup.fastq
@@ -375,17 +423,17 @@ SRR098026-backup.fastq
 We discussed in a previous section how to look at a file using `less` and `head`. We can also
 search within files without even opening them, using `grep`. We can then send what we find to somewhere else.
 
-~~~
-$ cd ~/shell_data/untrimmed_fastq
-~~~
-{: .bash}
+```bash
+$ cd ~/obss_2021/intro_bash/shell_data/untrimmed_fastq
+```
+
 
 Suppose we want to see how many reads in our file have really bad segments containing 10 consecutive unknown nucleotides (Ns).
 Let's search for the string NNNNNNNNNN in the SRR098026 file:
-~~~
+
+```bash
 $ grep NNNNNNNNNN SRR098026.fastq
-~~~
-{: .bash}
+```
 
 One of the sets of lines returned by this command is: 
 ~~~
@@ -400,10 +448,10 @@ We can use the `-B` argument for grep to return a specific number of lines befor
 each match. The `-A` argument returns a specific number of lines after each matching line. Here we want the line *before* and the two lines *after* each 
 matching line, so we add `-B1 -A2` to our grep command:
 
-~~~
+```bash
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq
-~~~
-{: .bash}
+```
+
 
 The command for redirecting output to a file is `>`.
 
@@ -411,16 +459,16 @@ Let's try out this command and copy all the records (including all four lines of
 in our FASTQ files that contain 
 'NNNNNNNNNN' to another file called `bad_reads.txt`.
 
-~~~
+```bash
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.txt
-~~~
-{: .bash}
+```
+
 
 We can then see how many bad read we have
-~~~
+```bash
 $ wc -l bad_reads.txt
-~~~
-{: .bash}
+```
+
 
 ~~~
 537 bad_reads.txt
@@ -442,32 +490,33 @@ When our output was scrolling by, we might have wished we could slow it down and
 look at it, like we can with `less`. Well it turns out that we can! We can redirect our output
 from our `grep` call through the `less` command.
 
-~~~
+```bash
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq | wc -l 
-~~~
-{: .bash}
+```
+
 
 ---
 ## Variables
 
 A variable is a method to store information eg a list, and use it again (or several times) without having to write the list out.
 
-~~~
+```bash
 $ foo=abc
 $ echo foo is $foo
-~~~
-{: .bash}
+```
 
-~~~
+
+```bash
 foo is abc
-~~~
-{: .output}
+```
+
 
 We can add to a variable with curly brackets `{}`
-~~~
+
+```bash
 $ echo foo is ${foo}EFG
-~~~
-{: .bash}
+```
+
 
 ~~~
 foo is abcEFG
@@ -490,18 +539,18 @@ as a variable name and substitute its value in its place, rather than treat it a
 
 Let's write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven’t finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
 
-~~~
+```bash
 $ cd ../untrimmed_fastq/
-~~~
-{: .bash}
+```
 
-~~~
+
+```bash
 $ for filename in *.fastq
 > do
 > head -n 2 ${filename}
 > done
-~~~
-{: .bash}
+```
+
 
 The for loop begins with the formula `for <variable> in <group to iterate over>`. In this case, the word `filename` is designated 
 as the variable to be used over each iteration. In our case `SRR097977.fastq` and `SRR098026.fastq` will be substituted for `filename` 
@@ -512,13 +561,13 @@ word `done` ends the loop.
 After executing the loop, you should see the first two lines of both fastq files printed to the terminal. Let's create a loop that 
 will save this information to a file.
 
-~~~
+```bash
 $ for filename in *.fastq
 > do
 > head -n 2 ${filename} >> seq_info.txt
 > done
-~~~
-{: .bash}
+```
+
 
 When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using
 
@@ -533,10 +582,10 @@ every time the loop iterates, so it would only have text from the last variable 
 
 `basename` is a function in UNIX that is helpful for removing a uniform part of a name from a list of files. In this case, we will use basename to remove the `.fastq` extension from the files that we’ve been working with. 
 
-~~~
+```bash
 $ basename SRR097977.fastq .fastq
-~~~
-{: .bash}
+```
+
 
 We see that this returns just the SRR accession, and no longer has the .fastq file extension on it.
 
@@ -547,10 +596,10 @@ SRR097977
 
 If we try the same thing but use `.fasta` as the file extension instead, nothing happens. This is because basename only works when it exactly matches a string in the file.
 
-~~~
+```bash
 $ basename SRR097977.fastq .fasta
-~~~
-{: .bash}
+```
+
 
 ~~~
 SRR097977.fastq
@@ -561,26 +610,30 @@ Basename is really powerful when used in a for loop. It allows to access just th
 
 Inside our for loop, we create a new name variable. We call the basename function inside the parenthesis, then give our variable name from the for loop, in this case `${filename}`, and finally state that `.fastq` should be removed from the file name. It’s important to note that we’re not changing the actual files, we’re creating a new variable called name. The line > echo $name will print to the terminal the variable name each time the for loop runs. Because we are iterating over two files, we expect to see two lines of output.
 
-~~~
+```bash
 $ for filename in *.fastq
 > do
 > name=$(basename ${filename} .fastq)
 > echo ${name}
 > done
-~~~
-{: .bash}
+```
+
 
 One way this is really useful is to move files. Let's rename all of our .txt files using `mv` so that they have the years on them, which will document when we created them. 
 
-~~~
+```bash
 $ for filename in *.txt
 > do
 > name=$(basename ${filename} .txt)
 > mv ${filename}  ${name}_2019.txt
 > done
-~~~
-{: .bash}
+```
 
+
+
+## Extra exercises
+
+<!-- bring in extra exercises so that if people already know some bash they have something to do -->
 
 {% include links.md %}
 
