@@ -28,5 +28,15 @@ keypoints:
 [Trouble shooting Jupyter](https://github.com/GenomicsAotearoa/metagenomics_summer_school/tree/master/Access_NeSI_platforms/5_Jupyter_Troubleshooting)
 
 
+Copy from within terminal Jupyter:
+
+Mac OS: CMD + C
+
+Linux: Ctrl + ins
+
+
+
+<!-- include a schematic of the file system and how the workshop directories will be laid out-->
+
 {% include links.md %}
 
