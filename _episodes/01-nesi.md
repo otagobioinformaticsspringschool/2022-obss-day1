@@ -36,6 +36,15 @@ Linux: Ctrl + ins
 
 
 
+## Getting data onto/off of NeSI
+
+For small files (a few megabytes) you can use the upload button on Jupyter hub in the file explorer pane. For downloading (small files) use the navigation pane to find the file you would like, right click and then select to download.
+
+Both upload and download through Jupyter Hub is done through the browser and not recommended for larger files ( >100 MB)
+
+
+For moving larger data onto or off of NeSI the [use of globus is recommended](https://support.nesi.org.nz/hc/en-gb/articles/360000576776-Data-Transfer-using-Globus-V4).
+
 <!-- include a schematic of the file system and how the workshop directories will be laid out-->
 
 {% include links.md %}
