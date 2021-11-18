@@ -372,6 +372,69 @@ A!@B!BBB@ABAB#########!!!!!!!######
 {: .output}
 
 ---
+
+### Shortcut: Tab Completion
+
+Typing out file or directory names can waste a
+lot of time and it's easy to make typing mistakes. Instead we can use tab complete 
+as a shortcut. When you start typing out the name of a directory or file, then
+hit the <kbd>Tab</kbd> key, the shell will try to fill in the rest of the
+directory or file name.
+
+Return to the `intro_bash` directory:
+
+~~~
+$ cd ~/obss_2021/intro_bash
+~~~
+{: .bash}
+
+then enter:
+
+~~~
+$ cd she<tab>
+~~~
+{: .bash}
+
+The shell will fill in the rest of the directory name for
+`shell_data`.
+
+Now change directories to `untrimmed_fastq` in `shell_data`
+
+~~~
+$ cd shell_data
+$ cd untrimmed_fastq
+~~~
+{: .bash}
+
+Using tab complete can be very helpful. However, it will only autocomplete
+a file or directory name if you've typed enough characters to provide
+a unique identifier for the file or directory you are trying to access.
+
+For example, if we now try to list the files which names start with `SR`
+by using tab complete:  
+
+~~~
+$ ls SR<tab>
+~~~
+{: .bash}
+
+The shell auto-completes your command to `SRR09`, because all file names in 
+the directory begin with this prefix. When you hit
+<kbd>Tab</kbd> again, the shell will list the possible choices.
+
+~~~
+$ ls SRR09<tab><tab>
+~~~
+{: .bash}
+
+~~~
+SRR097977.fastq  SRR098026.fastq
+~~~
+{: .output}
+
+Tab completion can also fill in the names of programs, which can be useful if you
+remember the beginning of a program name.
+
 ## Copying Files
 
 When working with computational data, it's important to keep a safe copy of that data that can't be accidentally overwritten or deleted. 
