@@ -1,7 +1,7 @@
 ---
 title: "Introduction to the UNIX shell"
-teaching: 0
-exercises: 0
+teaching: 90
+exercises: 25
 questions:
 - "What is a command shell and why would I use one?"
 - "How can I see what files and directories I have?"
