@@ -32,7 +32,7 @@ Copy from within terminal Jupyter:
 
 Mac OS: CMD + C
 
-Linux: Ctrl + ins
+Windows/Linux: Ctrl + ins
 
 
 
