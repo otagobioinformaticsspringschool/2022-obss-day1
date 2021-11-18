@@ -3,7 +3,9 @@ title: "Introduction to the UNIX shell"
 teaching: 0
 exercises: 0
 questions:
-- "Key question (FIXME)"
+- "What is a command shell and why would I use one?"
+- "How can I see what files and directories I have?"
+- "How can I use loops and scripts to my advantage?"
 objectives:
 - "Use the shell to navigate directories"
 - "Perform operations on files in directories outside your working directory"
@@ -12,7 +14,9 @@ objectives:
 - "Construct command pipelines with two or more stages."
 - "Use for loops to run the same command for several input files."
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "The shell gives you the ability to work more efficiently by using keyboard commands rather than a GUI."
+- "Useful commands for navigating your file system include: `ls`, `pwd`, and `cd`."
+- "Tab completion can reduce errors from mistyping and make work more efficient in the shell."
 ---
 
 # Introduction to Unix commandline (BASH)
@@ -20,7 +24,7 @@ Learning objectives:
 
 
 
-These introductory notes are drawn from [The Carpentries](https://carpentries.org) **[Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/)** lessons
+These introductory notes are adapted from [The Carpentries](https://carpentries.org) **[Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/)** lessons
 
 ---
 ## Introducing the Shell
@@ -164,9 +168,9 @@ $ pwd
 ~~~
 {: .output}
 
-
 > Using `cd` without specifying a directory will by default send you to your home directory
 {: .callout}
+
 
 This is the full name of your home directory. This tells you that you
 are in a directory called `matt.bixley`, which sits inside a directory called
@@ -178,28 +182,38 @@ directory in `home` which is a directory in `/` (_root_).
 
 Let's look at what is in your home directory:
 
+```bash
+ls
+```
+
+```
+obss_2021
+```
+{: .output}
+
+`obss_2021` is where we will be working out of for the entirity of the workshop. Lets change into that directory now using a relative path.
+
+```bash
+cd obss_2021
+```
+
 We can make the `ls` output from above, more comprehensible by using the **flag** `-F`,
 which tells `ls` to add a trailing `/` to the names of directories:
 
-~~~
+```bash
 $ ls -F
-~~~
-{: .bash}
+```
 
 ~~~
-obss_2021/
+edna/  gbs/  genomic_dna/  intro_bash/  intro_r/  rnaseq/
 ~~~
 {: .output}
+
+
 
 Anything with a "/" after it is a directory. Things with a "*" after them are programs. If
 there are no decorations, it's a file.
 
-Now lets use a relative path to enter the `obss_2021` directory
-
-```bash
-$ cd obss_2021
-$ pwd
-```
 
 ~~~
 /home/matt.bixley/obss_2021
@@ -230,7 +244,7 @@ $ cd /home/yourname/obss_2021/intro_bash/shell_data/
 This jumps forward multiple levels to the `shell_data` directory. 
 Now go back to the home directory with `cd` or `cd ~`
 
-```
+```bash
 $ cd
 ```
 
@@ -394,7 +408,7 @@ We can now move our backup file to this directory. We can
 move files around using the command `mv`:
 
 ```bash
-$ mv SRR098026-copy.fastq backup
+$ mv SRR098026-copy.fastq backup/
 $ ls backup
 ```
 
@@ -435,14 +449,22 @@ Let's search for the string NNNNNNNNNN in the SRR098026 file:
 $ grep NNNNNNNNNN SRR098026.fastq
 ```
 
-One of the sets of lines returned by this command is: 
+One of the sets of lines returned by this command is: `CNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN`.
+
+Because a read in a Fastq file involves 4 lines per read, we want a way to return the metadata and the quality associated with that sequence.
+
+> ## FastQ files
+> We will cover the FastQ format in more depth as part of the [Genomic DNA variant](https://murraycadzow.github.io/2021-obss-day2/02-quality-control/index.html) calling lesson tomorrow.
+>
+{: .callout}
+
 ~~~
 @SRR098026.177 HWUSI-EAS1599_1:2:1:1:2025 length=35
 CNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 +SRR098026.177 HWUSI-EAS1599_1:2:1:1:2025 length=35
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ~~~
-{: .output}
+{: .code}
 
 We can use the `-B` argument for grep to return a specific number of lines before
 each match. The `-A` argument returns a specific number of lines after each matching line. Here we want the line *before* and the two lines *after* each 
@@ -452,7 +474,7 @@ matching line, so we add `-B1 -A2` to our grep command:
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq
 ```
 
-
+Instead of the found text spilling onto the screen, it would be useful to be able to send it to a file so that we could browse through it in a controlled manner e.g. using `less`.
 The command for redirecting output to a file is `>`.
 
 Let's try out this command and copy all the records (including all four lines of each record) 
@@ -463,8 +485,10 @@ in our FASTQ files that contain
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.txt
 ```
 
+The UNIX shell comes with many useful programs, once such one is `wc` which does a _word count_ on a file.
 
-We can then see how many bad read we have
+We can then see how many bad reads we have.
+
 ```bash
 $ wc -l bad_reads.txt
 ```
@@ -474,6 +498,11 @@ $ wc -l bad_reads.txt
 537 bad_reads.txt
 ~~~
 {: .output}
+
+
+> ## Help and Manuals
+> You can find out what flags are available to most UNIX programs by using the `--help` flag. Or you can use the in-built manual by using `man <program>`, e.g. `man wc` will let you find out what the `-l` flag does.
+{: .callout}
 
 We created the files to store the reads and then counted the lines in 
 the file to see how many reads matched our criteria. There's a way to do this, however, that
@@ -506,9 +535,10 @@ $ echo foo is $foo
 ```
 
 
-```bash
+~~~
 foo is abc
-```
+~~~
+{: .output}
 
 
 We can add to a variable with curly brackets `{}`
@@ -640,11 +670,11 @@ $ for filename in *.txt
 
 We've been able to do a lot of work with files that already exist, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
 
-To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files in `~/shell_data/untrimmed_fastq`.
+To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files in `~/obss_2021/intro_bash/shell_data/untrimmed_fastq`.
 
 This is good practice when working in bioinformatics. We can create a file called `README.txt` that describes the data files in the directory or documents how the files in that directory were generated.  As the name suggests, it's a file that we or others should read to understand the information in that directory.
 
-Let's change our working directory to `~/shell_data/untrimmed_fastq` using `cd`,
+Let's change our working directory to `~/obss_2021/intro_bash/shell_data/untrimmed_fastq` using `cd`,
 then run `nano` to create a file called `README.txt`:
 
 ~~~

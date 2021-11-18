@@ -28,14 +28,6 @@ keypoints:
 [Trouble shooting Jupyter](https://github.com/GenomicsAotearoa/metagenomics_summer_school/tree/master/Access_NeSI_platforms/5_Jupyter_Troubleshooting)
 
 
-Copy from within terminal Jupyter:
-
-Mac OS: CMD + C
-
-Windows/Linux: Ctrl + ins
-
-
-
 ## Getting data onto/off of NeSI
 
 For small files (a few megabytes) you can use the upload button on Jupyter hub in the file explorer pane. For downloading (small files) use the navigation pane to find the file you would like, right click and then select to download.
