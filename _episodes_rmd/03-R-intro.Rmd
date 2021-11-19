@@ -90,25 +90,23 @@ analyzing data in R:
 
 ## Creating your first R notebook
 
-After logging into the [NeSI Jupyter lab](../01-nesi/index.html),
+After logging into the [NeSI Jupyter lab](../01-nesi/index.html), open an R (v4.1) notebook.
+
+<img src="../fig/jupyter_launcher.png" alt="jupyter launcher window" style="width: 1000px;"/>
+
+
 
 Now that we are ready to start exploring R, we will want to keep a record of the
-commands we are using. To do this we can create an R script:
+commands we are using in out notebook. Lets first save our new notebook.
 
-Click the <kbd>File</kbd> menu and select <kbd>New File</kbd> and then
-<kbd>R Script</kbd>. Before we go any further, save your script by clicking the
-save/disk icon that is in the bar above the first line in the script editor, or
-click the <kbd>File</kbd> menu and select <kbd>save</kbd>. In the "Save File"
-window that opens, name your file **"genomics_r_basics"**. The new script
-**genomics_r_basics.R** should appear under "files" in the output pane. By
-convention, R scripts end with the file extension **.R**.
+Click the <kbd>File</kbd> menu and select <kbd>Save Notebook As</kbd> and then call it
+`intro_r.ipynb`. By convention, notebooks end with the file extension **.ipynb**.
 
 ## Overview of the R notebook layout
 
-Here are the major windows (or panes) of the RStudio
-environment:
+Here are the main features of the notebook environment:
 
-<img src="../fig/rstudio_session_4pane_layout.png" alt="rstudio default session" style="width: 1000px;"/>
+<img src="../fig/r_notebook.png" alt="r notebook default session" style="width: 1000px;"/>
 
 
 Some useful keyboard shortcuts:
@@ -125,39 +123,37 @@ Some useful keyboard shortcuts:
 > Although we won't be working with R at the terminal, there are lots of reasons
 > to. For example, once you have written an RScript, you can run it at any Linux
 > or Windows terminal without the need to start up RStudio. We don't want
-> you to get confused - RStudio runs R, but R is not RStudio. For more on
+> you to get confused - Jupyter or RStudio runs R, but R is not RStudio or Jupyter. For more on
 > running an R Script at the terminal see this [Software Carpentry lesson](https://swcarpentry.github.io/r-novice-inflammation/05-cmdline/).
 {: .callout}
 ## Getting to work with R: navigating directories
-Now that we have covered the more aesthetic aspects of RStudio, we can get to
+Now that we have covered the more aesthetic aspects of Jupyter notebooks, we can get to
 work using some commands. We will write, execute, and save the commands we
-learn in our **genomics_r_basics.R** script that is loaded in the Source pane.
+learn in our notebook.
 First, lets see what directory we are in. To do so, type the following command
-into the script:
+into the cell:
 
 ```{r, eval = FALSE, purl = FALSE}
 getwd()
 ```
 
 To execute this command, make sure your cursor is on the same line the command
-is written. Then click the <KBD>Run</KBD> button that is just above the first
-line of your script in the header of the Source pane.
+is written. Then click the <KBD>Run</KBD> (play) button that is just above the first
+line of your notebook in the header.
 
 
 In the output, we expect to see the following output*:
 
 ~~~
-[1] "/home/dcuser/dc_genomics_r"
+[1] "'/scale_wlg_persistent/filesets/home/murray.cadzow/.jupyter/jobs/23207554'"
 ~~~
 {: .output}
 
-\* Notice, at the Console, you will also see the instruction you executed
-above the output in blue.
 
 Since we will be learning several commands, we may already want to keep some
-short notes in our script to explain the purpose of the command. Entering a `#`
-before any line in an R script turns that line into a comment, which R will
-not try to interpret as code. Edit your script to include a comment on the
+short notes in our notebook to explain the purpose of the command. Entering a `#`
+before any line in a cell turns that line into a comment, which R will
+not try to interpret as code. Edit your cell to include a comment on the
 purpose of commands you are learning, e.g.:
 
 ```{r, eval = FALSE, purl = FALSE}
@@ -176,7 +172,7 @@ getwd()
 >> and ultimately run an entire script, instead of entering commands one-by-one.
 > {: .solution}
 {: .challenge}
-For the purposes of this exercise we want you to be in the directory `"/home/dcuser/R_data"`.
+For the purposes of this exercise we want you to be in the directory `"~/obss_2021/intro_r"`.
 What if you weren't? You can set your home directory using the `setwd()`
 command. Enter this command in your script, but *don't run* this yet.
 
@@ -187,14 +183,13 @@ setwd()
 
 You may have guessed, you need to tell the `setwd()` command
 what directory you want to set as your working directory. To do so, inside of
-the parentheses, open a set of quotes. Inside the quotes enter a `/` which is
-the root directory for Linux. Next, use the <KBD>Tab</KBD> key, to take
-advantage of RStudio's Tab-autocompletion method, to select `home`, `dcuser`,
-and `dc_genomics_r` directory. The path in your script should look like this:
+the parentheses, open a set of quotes. Inside the quotes enter a `~/` which is
+your home directory for Linux. Next, use the <KBD>Tab</KBD> key, to take
+advantage of the Tab-autocompletion method, to select `obss_2021`, and `intro_r` directory. The path in your script should look like this:
 
 ```{r, eval = FALSE, purl = FALSE}
 # This sets the working directory
-setwd("/home/dcuser/dc_genomics_r")
+setwd("~/obss_2021/intro_r")
 ```
 
 When you run this command, the console repeats the command, but gives you no
@@ -204,7 +199,7 @@ working directory is the first step to analyzing your data.
 
 > ## Tip: Never use `setwd()`
 >
-> Wait, what was the last 2 minutes about? Well, setting your working directory
+> Wait, what was the last 2 minutes about? Well, if setting your working directory
 > is something you need to do, you need to be very careful about using this as
 > a step in your script. For example, what if your script is being on a computer
 > that has a different directory structure? The top-level path in a Unix file
@@ -216,6 +211,7 @@ working directory is the first step to analyzing your data.
 > independent. See Jenny Bryan's [blog post](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/) for this
 > and other R tips.
 {: .callout}
+
 ## Using functions in R, without needing to master them
 
 A function in R (or any computing language) is a short
@@ -342,17 +338,3 @@ the `help.search()` function.
 
 We will discuss more on where to look for the libraries and packages that contain functions you want to use. For now, be aware that two important ones are [CRAN](https://cran.r-project.org/) - the main repository for R, and [Bioconductor](http://bioconductor.org/) - a popular repository for bioinformatics-related R packages.
 
-## RStudio contextual help
-
-Here is one last bonus we will mention about RStudio. It's difficult to
-remember all of the arguments and definitions associated with a given function.
-When you start typing the name of a function and hit the <KBD>Tab</KBD> key,
-RStudio will display functions and associated help:
-
-<img src="../fig/studio_contexthelp1.png" alt="rstudio default session" style="width: 600px;"/>
-
-Once you type a function, hitting the <KBD>Tab</KBD> inside the parentheses
-will show you the function's arguments and provide additional help
-for each of these arguments.
-
-<img src="../fig/studio_contexthelp2.png" alt="rstudio default session" style="width: 600px;"/>
