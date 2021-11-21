@@ -62,7 +62,7 @@ below.
 - How to create and work with loops and conditional statements, and the "apply"
   family of functions (which are super useful, read more [here](https://www.r-bloggers.com/r-tutorial-on-the-apply-family-of-functions/))
 - How to do basic string manipulations (e.g. finding patterns in text using grep, replacing text)
-- How to plot using the default R graphic tools (we *will* cover plot creation, but will do so using the popular plotting package `ggplot2`)
+- How to plot using the default R graphic tools
 - How to use advanced R statistical functions
 
 > ## Tip: Where to learn more
@@ -89,8 +89,8 @@ below.
 
 > ## Reminder
 >
-> At this point you should be coding along in the "**genomics_r_basics.R**"
-> script we created in the last episode. Writing your commands in the script
+> At this point you should be coding along in your
+> notebook we created in the last episode. Writing your commands in the notebook
 > (and commenting it) will make it easier to record what you did and why.
 {: .prereq}
 
@@ -117,33 +117,49 @@ a <- 1
 
 Next, run this line of code in your script. You can run a line of code
 by hitting the <KBD>Run</KBD> button that is just above the first line of your
-script in the header of the Source pane or you can use the appropriate shortcut:
+notebook in the header of the pane or you can use the appropriate shortcut:
 
-- Windows execution shortcut: <KBD>Ctrl</KBD>+<KBD>Enter</KBD>
-- Mac execution shortcut: <KBD>Cmd(⌘)</KBD>+<KBD>Enter</KBD>
+- execution shortcut: <KBD>Shift</KBD>+<KBD>Enter</KBD>
 
-To run multiple lines of code, you can highlight all the line you wish to run
-and then hit <KBD>Run</KBD> or use the shortcut key combo listed above.
 
-In the RStudio 'Console' you should see:
+
+
+Beneath the cell you should see a new cell appear. There won't be any output shown but there will now be an object called `a` in our environment.
+
+To see what objects are in the environment we can use the `ls()` function.
+
+
 
 ~~~
-a <- 1
->
+# this line tells us the objects in the environment
+
+ls()
+~~~
+{: .language-r}
+
+~~~
+'a'
 ~~~
 {: .output}
 
-The 'Console' will display lines of code run from a script and any outputs or
-status/warning/error messages (usually in red).
 
-In the 'Environment' window you will also get a table:
+If we cant to get back the value stored in an object we use its name
 
-|Values||
-|------|-|
-|a|1|
 
-The 'Environment' window allows you to keep track of the objects you have
-created in R.
+~~~
+# this line outputs the value stored in the object called 'a'
+
+a
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 1
+~~~
+{: .output}
+
 
 > ## Exercise: Create some objects in R
 >
@@ -189,18 +205,15 @@ Here are some important details about naming objects in R.
   chosen a name that has a reserved meaning.
 - **Use the recommended assignment operator**: In R, we use '<- ' as the
   preferred assignment operator. '=' works too, but is most commonly used in
-  passing arguments to functions (more on functions later). There is a shortcut
-  for the R assignment operator:
-  - Windows execution shortcut: <KBD>Alt</KBD>+<KBD>-</KBD>
-  - Mac execution shortcut: <KBD>Option</KBD>+<KBD>-</KBD>
+  passing arguments to functions (more on functions later). 
 
 There are a few more suggestions about naming and style you may want to learn
 more about as you write more R code. There are several "style guides" that
 have advice, and one to start with is the [tidyverse R style guide](http://style.tidyverse.org/index.html).
 
-> ## Tip: Pay attention to warnings in the script console
+> ## Tip: Pay attention to warnings in the output
 >
-> If you enter a line of code in your script that contains an error, RStudio
+> If you enter a line of code in your notebook that contains an error, Jupyter
 > may give you an error message and underline this mistake. Sometimes these
 > messages are easy to understand, but often the messages may need some figuring
 > out. Paying attention to these warnings will help you avoid mistakes. In the example below, our object name has a space, which

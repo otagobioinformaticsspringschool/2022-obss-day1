@@ -34,6 +34,8 @@ keypoints:
 source: Rmd
 ---
 
+** This lesson was adapted from https://datacarpentry.org/genomics-r-intro/03-basics-factors-dataframes/index.html**
+
 
 
 ## Working with spreadsheets (tabular data)
@@ -138,7 +140,7 @@ We will need to load the sheet using a function called `read.csv()`.
 {: .challenge}
 
 Now, let's read in the file `combined_tidy_vcf.csv` which will be located in
-`/home/dcuser/r_data/`. Call this data `variants`. The
+`~/obss_2021/intro_r/`. Call this data `variants`. The
 first argument to pass to our `read.csv()` function is the file path for our
 data. The file path must be in quotes and now is a good time to remember to
 use tab autocompletion. **If you use tab autocompletion you avoid typos and
@@ -148,19 +150,59 @@ errors in file paths.** Use it!
 ~~~
 ## read in a CSV file and save it as 'variants'
 
-variants <- read.csv("/home/dcuser/r_data/combined_tidy_vcf.csv")
+variants <- read.csv("~/obss_2021/intro_r/combined_tidy_vcf.csv")
 ~~~
 {: .language-r}
 
 
 
 
-One of the first things you should notice is that in the Environment window,
-you have the `variants` object, listed as 801 obs. (observations/rows)
-of 29 variables (columns). Double-clicking on the name of the object will open
-a view of the data in a new tab.
+Lets use `str()` to get an idea of what we're dealing with.
 
-<img src="../fig/rstudio_dataframeview.png" alt="rstudio data frame view" style="width: 1000px;"/>
+
+
+~~~
+# Find out the names, datatypes, and dimensions
+
+str(variants)
+~~~
+{: .language-r}
+
+
+
+~~~
+'data.frame':	801 obs. of  29 variables:
+ $ sample_id    : chr  "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863" ...
+ $ CHROM        : chr  "CP000819.1" "CP000819.1" "CP000819.1" "CP000819.1" ...
+ $ POS          : int  9972 263235 281923 433359 473901 648692 1331794 1733343 2103887 2333538 ...
+ $ ID           : logi  NA NA NA NA NA NA ...
+ $ REF          : chr  "T" "G" "G" "CTTTTTTT" ...
+ $ ALT          : chr  "G" "T" "T" "CTTTTTTTT" ...
+ $ QUAL         : num  91 85 217 64 228 210 178 225 56 167 ...
+ $ FILTER       : logi  NA NA NA NA NA NA ...
+ $ INDEL        : logi  FALSE FALSE FALSE TRUE TRUE FALSE ...
+ $ IDV          : int  NA NA NA 12 9 NA NA NA 2 7 ...
+ $ IMF          : num  NA NA NA 1 0.9 ...
+ $ DP           : int  4 6 10 12 10 10 8 11 3 7 ...
+ $ VDB          : num  0.0257 0.0961 0.7741 0.4777 0.6595 ...
+ $ RPB          : num  NA 1 NA NA NA NA NA NA NA NA ...
+ $ MQB          : num  NA 1 NA NA NA NA NA NA NA NA ...
+ $ BQB          : num  NA 1 NA NA NA NA NA NA NA NA ...
+ $ MQSB         : num  NA NA 0.975 1 0.916 ...
+ $ SGB          : num  -0.556 -0.591 -0.662 -0.676 -0.662 ...
+ $ MQ0F         : num  0 0.167 0 0 0 ...
+ $ ICB          : logi  NA NA NA NA NA NA ...
+ $ HOB          : logi  NA NA NA NA NA NA ...
+ $ AC           : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ AN           : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ DP4          : chr  "0,0,0,4" "0,1,0,5" "0,0,4,5" "0,1,3,8" ...
+ $ MQ           : int  60 33 60 60 60 60 60 60 60 60 ...
+ $ Indiv        : chr  "/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam" "/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam" "/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam" "/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam" ...
+ $ gt_PL        : chr  "121,0" "112,0" "247,0" "91,0" ...
+ $ gt_GT        : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ gt_GT_alleles: chr  "G" "T" "T" "CTTTTTTTT" ...
+~~~
+{: .output}
 
 ## Summarizing, subsetting, and determining the structure of a data frame.
 
@@ -458,7 +500,7 @@ plot(factor_snps)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-05-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="612" style="display: block; margin: auto;" />
 
 This isn't a particularly pretty example of a plot but it works. We'll be
 learning much more about creating nice, publication-quality graphics later in
@@ -497,7 +539,7 @@ plot(ordered_factor_snps)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-05-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="612" style="display: block; margin: auto;" />
 
 Factors come in handy in many places when using R. Even using more
 sophisticated plotting packages such as ggplot2 will sometimes require you
