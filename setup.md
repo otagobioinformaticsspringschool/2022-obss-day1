@@ -10,17 +10,27 @@ Running the workshop locally on your own computer will involve installing the re
 
 ## Software
 
-<!-- note down the software and packages needed to be installed at a minimum - we can't guarantee that we can work on all OSes-->
+This software is required at a minimum in order to follow through the lessons. Jupyter labs is used in the lessons, but for running locally it is recommended to use the stand-alone programs.
 
-Unix shell
+In order to run the workshop on your own computer you will need to ensure you installed:
 
-R
+- A UNIX shell such as BASH
+    - [install instructions](https://carpentries.github.io/workshop-template/#setup)
+- R and RStudio. (use Rstudio in place of the R notebooks from Jupyter)
+    - [install instructions](https://carpentries.github.io/workshop-template/#setup)
 
 ## Data
 
-The data used in this workshop can be found at...
+In order to replicate the directory structure of the workshop, in bash run these commands:
 
-<!-- describe the process for obtaining the data and making it look like the data used on nesi -->
+```bash
+mkdir -p ~/obss_2021/intro_r ~/obss_2021/intro_bash
 
+curl -L -o ~/obss_2021/intro_bash/shell_data.tar.gz https://figshare.com/ndownloader/files/14417834
+tar -xzf ~/obss_2021/intro_bash/shell_data.tar.gz
+
+
+curl -L -o ~/obss_2021/intro_r/combined_tidy_vcf.csv https://ndownloader.figshare.com/files/14632895
+```
 
 {% include links.md %}
