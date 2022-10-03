@@ -175,7 +175,7 @@ getwd()
 >> and ultimately run an entire script, instead of entering commands one-by-one.
 > {: .solution}
 {: .challenge}
-For the purposes of this exercise we want you to be in the directory `"~/obss_2021/intro_r"`.
+For the purposes of this exercise we want you to be in the directory `"~/obss_2022/intro_r"`.
 What if you weren't? You can set your home directory using the `setwd()`
 command. Enter this command in your script, but *don't run* this yet.
 
@@ -190,12 +190,12 @@ You may have guessed, you need to tell the `setwd()` command
 what directory you want to set as your working directory. To do so, inside of
 the parentheses, open a set of quotes. Inside the quotes enter a `~/` which is
 your home directory for Linux. Next, use the <KBD>Tab</KBD> key, to take
-advantage of the Tab-autocompletion method, to select `obss_2021`, and `intro_r` directory. The path in your script should look like this:
+advantage of the Tab-autocompletion method, to select `obss_2022`, and `intro_r` directory. The path in your script should look like this:
 
 
 ~~~
 # This sets the working directory
-setwd("~/obss_2021/intro_r")
+setwd("~/obss_2022/intro_r")
 ~~~
 {: .language-r}
 

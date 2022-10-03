@@ -140,7 +140,7 @@ We will need to load the sheet using a function called `read.csv()`.
 {: .challenge}
 
 Now, let's read in the file `combined_tidy_vcf.csv` which will be located in
-`~/obss_2021/intro_r/`. Call this data `variants`. The
+`~/obss_2022/intro_r/`. Call this data `variants`. The
 first argument to pass to our `read.csv()` function is the file path for our
 data. The file path must be in quotes and now is a good time to remember to
 use tab autocompletion. **If you use tab autocompletion you avoid typos and
@@ -150,7 +150,7 @@ errors in file paths.** Use it!
 ~~~
 ## read in a CSV file and save it as 'variants'
 
-variants <- read.csv("~/obss_2021/intro_r/combined_tidy_vcf.csv")
+variants <- read.csv("~/obss_2022/intro_r/combined_tidy_vcf.csv")
 ~~~
 {: .language-r}
 
@@ -500,7 +500,7 @@ plot(factor_snps)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-05-unnamed-chunk-15-1.png" alt="plot of chunk unnamed-chunk-15" width="612" style="display: block; margin: auto;" />
 
 This isn't a particularly pretty example of a plot but it works. We'll be
 learning much more about creating nice, publication-quality graphics later in
@@ -539,7 +539,7 @@ plot(ordered_factor_snps)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-05-unnamed-chunk-17-1.png" alt="plot of chunk unnamed-chunk-17" width="612" style="display: block; margin: auto;" />
 
 Factors come in handy in many places when using R. Even using more
 sophisticated plotting packages such as ggplot2 will sometimes require you
@@ -744,9 +744,12 @@ where we are taking a range).
 >>
 >> 
 >> ~~~
->> Error: attempt to use zero-length variable name
+>> [1] "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863"
+>> [6] "SRR2584863"
 >> ~~~
->> {: .error}
+>> {: .output}
+>>
+>> i.
 >> 
 >> ~~~
 >> head(variants)

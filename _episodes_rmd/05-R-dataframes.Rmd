@@ -141,7 +141,7 @@ We will need to load the sheet using a function called `read.csv()`.
 {: .challenge}
 
 Now, let's read in the file `combined_tidy_vcf.csv` which will be located in
-`~/obss_2021/intro_r/`. Call this data `variants`. The
+`~/obss_2022/intro_r/`. Call this data `variants`. The
 first argument to pass to our `read.csv()` function is the file path for our
 data. The file path must be in quotes and now is a good time to remember to
 use tab autocompletion. **If you use tab autocompletion you avoid typos and
@@ -150,7 +150,7 @@ errors in file paths.** Use it!
 ```{r, eval = FALSE, purl = FALSE}
 ## read in a CSV file and save it as 'variants'
 
-variants <- read.csv("~/obss_2021/intro_r/combined_tidy_vcf.csv")
+variants <- read.csv("~/obss_2022/intro_r/combined_tidy_vcf.csv")
 ```
 
 

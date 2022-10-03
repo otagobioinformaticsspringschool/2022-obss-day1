@@ -136,7 +136,7 @@ Here is an example of how the workshop directory hierarchy is set up:
 /
 |-- home/
   |-- matt.bixley/
-    |-- obss_2021/
+    |-- obss_2022/
       |-- enda/
       |-- gbs/
       |-- genomic_dna/
@@ -187,14 +187,14 @@ ls
 ```
 
 ```
-obss_2021
+obss_2022
 ```
 {: .output}
 
-`obss_2021` is where we will be working out of for the entirity of the workshop. Lets change into that directory now using a relative path.
+`obss_2022` is where we will be working out of for the entirity of the workshop. Lets change into that directory now using a relative path.
 
 ```bash
-cd obss_2021
+cd obss_2022
 ```
 
 We can make the `ls` output from above, more comprehensible by using the **flag** `-F`,
@@ -216,7 +216,7 @@ there are no decorations, it's a file.
 
 
 ~~~
-/home/matt.bixley/obss_2021
+/home/matt.bixley/obss_2022
 ~~~
 {: .output}
 
@@ -237,7 +237,7 @@ You will see:
 Now enter the following command:
 
 ```bash
-$ cd /home/yourname/obss_2021/intro_bash/shell_data/
+$ cd /home/yourname/obss_2022/intro_bash/shell_data/
 ```
 
 
@@ -251,7 +251,7 @@ $ cd
 You can also navigate to the `shell_data` directory using:
 
 ```bash
-$ cd obss_2021/intro_bash/shell_data
+$ cd obss_2022/intro_bash/shell_data
 ```
 
 These two commands have the same effect, they both take us to the `shell_data` directory.
@@ -384,7 +384,7 @@ directory or file name.
 Return to the `intro_bash` directory:
 
 ~~~
-$ cd ~/obss_2021/intro_bash
+$ cd ~/obss_2022/intro_bash
 ~~~
 {: .bash}
 
@@ -501,7 +501,7 @@ We discussed in a previous section how to look at a file using `less` and `head`
 search within files without even opening them, using `grep`. We can then send what we find to somewhere else.
 
 ```bash
-$ cd ~/obss_2021/intro_bash/shell_data/untrimmed_fastq
+$ cd ~/obss_2022/intro_bash/shell_data/untrimmed_fastq
 ```
 
 
@@ -517,7 +517,7 @@ One of the sets of lines returned by this command is: `CNNNNNNNNNNNNNNNNNNNNNNNN
 Because a read in a Fastq file involves 4 lines per read, we want a way to return the metadata and the quality associated with that sequence.
 
 > ## FastQ files
-> We will cover the FastQ format in more depth as part of the [Genomic DNA variant](https://murraycadzow.github.io/2021-obss-day2/02-quality-control/index.html) calling lesson tomorrow.
+> We will cover the FastQ format in more depth as part of the [Genomic DNA variant](https://otagobioinformaticsspringschool.github.io/2022-obss-day2/02-quality-control/index.html) calling lesson tomorrow.
 >
 {: .callout}
 
@@ -733,11 +733,11 @@ $ for filename in *.txt
 
 We've been able to do a lot of work with files that already exist, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
 
-To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files in `~/obss_2021/intro_bash/shell_data/untrimmed_fastq`.
+To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files in `~/obss_2022/intro_bash/shell_data/untrimmed_fastq`.
 
 This is good practice when working in bioinformatics. We can create a file called `README.txt` that describes the data files in the directory or documents how the files in that directory were generated.  As the name suggests, it's a file that we or others should read to understand the information in that directory.
 
-Let's change our working directory to `~/obss_2021/intro_bash/shell_data/untrimmed_fastq` using `cd`,
+Let's change our working directory to `~/obss_2022/intro_bash/shell_data/untrimmed_fastq` using `cd`,
 then run `nano` to create a file called `README.txt`:
 
 ~~~
