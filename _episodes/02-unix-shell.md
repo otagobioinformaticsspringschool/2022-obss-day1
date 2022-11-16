@@ -43,12 +43,10 @@ In this lesson you will learn how to use the command line interface to move arou
 Open up a terminal in Juypter.
 
 ```bash
-[matt.bixley@wbg004 ~/.jupyter/jobs/22861436] $
+[matt.bixley@wbg004 ~/] $
 ```
 
 
-> Note you will automatically start off in a directory related to the slurm job running your Jupyter session e.g. `~/.jupyter/jobs/22861436`
-{: .callout}
 
 The dollar sign is a **prompt**, which shows us that the shell is waiting for input;
 your shell may use a different character as a prompt and may add information before
@@ -64,7 +62,7 @@ is our current default directory,
 i.e.,
 the directory that the computer assumes we want to run commands in,
 unless we explicitly specify something else.
-Here, the computer's response is `/home/yourname/.jupyter/jobs/yourjobid`,
+Here, the computer's response is `/home/yourname/`,
  name and the number you see will be different and relates to your username and the 
  specific Jupyter session running on NeSI.
 
@@ -74,7 +72,7 @@ $ pwd
 
 
 ~~~
-/home/matt.bixley/.jupyter/jobs/22861436
+/home/matt.bixley/
 ~~~
 {: .output}
 
@@ -105,16 +103,16 @@ $ ls -l
 ~~~
 total 3
 lrwxrwxrwx 1 matt.bixley matt.bixley 19 Oct 18 21:02 home -> /home/matt.bixley
-lrwxrwxrwx 1 matt.bixley matt.bixley 23 Oct 18 21:02 nesi02659 -> /nesi/project/nesi02659
-lrwxrwxrwx 1 matt.bixley matt.bixley 24 Oct 18 21:02 nobackup_nesi02659 -> /nesi/nobackup/nesi02659
+lrwxrwxrwx 1 matt.bixley matt.bixley 23 Oct 22 21:02 obss_2022 -> /nesi/project/nesi02659/obss_2022/users/matt.bixley/
+
 ~~~
 {: .output}
 
 The `->` in this output tells us that we have some shortcut links in this directory.
 
 - `home` in this case is a short cut to our actual `home` directory
-- `nesi02659` is a shortcut to our project on the nesi filesystem.
-- `nobackup_nesi002659` is a shortcut to project directory that isn't backed up
+- `obss_2022` is a shortcut to our project on the nesi filesystem.
+
 
 ---
 
