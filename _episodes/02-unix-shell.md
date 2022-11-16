@@ -26,6 +26,9 @@ Learning objectives:
 
 These introductory notes are adapted from [The Carpentries](https://carpentries.org) **[Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/)** lessons
 
+> If you are not new to the UNIX shell, have a scroll through the lesson to ensure you know what is covered and then at the bottom is a link to some intermediate content that can be worked through while this lesson is being delivered.
+{: .callout}
+
 ---
 ## Introducing the Shell
 
@@ -918,6 +921,10 @@ The script should run the same way as before, but now we've created our very own
 
 You will learn more about writing scripts in [a later lesson](https://datacarpentry.org/wrangling-genomics/05-automation/index.html).
 
+
+### (OPTIONAL) Intermediate Content
+
+If you are comfortable with the material in this lesson, feel free to explore [Genomics Aotearoa's Shell for Bioinformatics Workshop](https://genomicsaotearoa.github.io/shell-for-bioinformatics/) . 
 
 {% include links.md %}
 
