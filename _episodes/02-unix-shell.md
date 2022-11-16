@@ -26,7 +26,7 @@ Learning objectives:
 
 These introductory notes are adapted from [The Carpentries](https://carpentries.org) **[Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/)** lessons
 
-> If you are not new to the UNIX shell, have a scroll through the lesson to ensure you know what is covered and then at the bottom is a link to some intermediate content that can be worked through while this lesson is being delivered.
+> If you are not new to the UNIX shell, have a scroll through the lesson to ensure you know what is covered and then at the bottom is a link to some optional content that can be worked through while this lesson is being delivered.
 {: .callout}
 
 ---
