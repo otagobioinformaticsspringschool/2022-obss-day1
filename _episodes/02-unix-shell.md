@@ -139,11 +139,11 @@ Here is an example of how the workshop directory hierarchy is set up:
   |-- matt.bixley/
     |-- obss_2022/
       |-- enda/
-      |-- gbs/
+      |-- genome_assembly/
       |-- genomic_dna/
       |-- intro_bash/
       |-- intro_r/
-      `-- rnaseq/
+      `-- nanopore/
 
 ```
 
@@ -206,7 +206,7 @@ $ ls -F
 ```
 
 ~~~
-edna/  gbs/  genomic_dna/  intro_bash/  intro_r/  rnaseq/
+edna/  genome_assembly/  genomic_dna/  intro_bash/  intro_r/  nanopore/
 ~~~
 {: .output}
 
