@@ -143,7 +143,7 @@ ls()
 {: .output}
 
 
-If we cant to get back the value stored in an object we use its name
+If we want to get back the value stored in an object we use its name:
 
 
 ~~~
