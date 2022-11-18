@@ -123,8 +123,8 @@ notebook in the header of the pane or you can use the appropriate shortcut:
 
 
 
-
-Beneath the cell you should see a new cell appear. There won't be any output shown but there will now be an object called `a` in our environment.
+If you are in RStudio you should see a blue line of code appear on the bottom of the screen. 
+There will now be an object called `a` in our environment on the right hand panel.
 
 To see what objects are in the environment we can use the `ls()` function.
 
