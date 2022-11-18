@@ -24,13 +24,13 @@ In order to run the workshop on your own computer you will need to ensure you in
 In order to replicate the directory structure of the workshop, in bash run these commands:
 
 ```bash
-mkdir -p ~/obss_2021/intro_r ~/obss_2021/intro_bash
+mkdir -p ~/obss_2021/intro_r ~/obss_2022/intro_bash
 
-curl -L -o ~/obss_2021/intro_bash/shell_data.tar.gz https://figshare.com/ndownloader/files/14417834
-tar -xzf ~/obss_2021/intro_bash/shell_data.tar.gz
+curl -L -o ~/obss_2022/intro_bash/shell_data.tar.gz https://figshare.com/ndownloader/files/14417834
+tar -xzf ~/obss_2022/intro_bash/shell_data.tar.gz
 
 
-curl -L -o ~/obss_2021/intro_r/combined_tidy_vcf.csv https://ndownloader.figshare.com/files/14632895
+curl -L -o ~/obss_2022/intro_r/combined_tidy_vcf.csv https://ndownloader.figshare.com/files/14632895
 ```
 
 {% include links.md %}
