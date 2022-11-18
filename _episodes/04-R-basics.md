@@ -119,7 +119,7 @@ Next, run this line of code in your script. You can run a line of code
 by hitting the <KBD>Run</KBD> button that is just above the first line of your
 notebook in the header of the pane or you can use the appropriate shortcut:
 
-- execution shortcut: <KBD>Shift</KBD>+<KBD>Enter</KBD>
+- execution shortcut: <KBD>Command</KBD>+<KBD>Enter</KBD>
 
 
 
@@ -164,7 +164,7 @@ a
 > ## Exercise: Create some objects in R
 >
 > Create the following objects; give each object an appropriate name
-> (your best guess at what name to use is fine):
+> (use whatever names you think are appropriate for each object):
 >
 > 1. Create an object that has the value of number of pairs of human chromosomes
 > 2. Create an object that has a value of your favorite gene name
