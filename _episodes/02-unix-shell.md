@@ -4,7 +4,10 @@ teaching: 90
 exercises: 25
 questions:
 - "What is a command shell and why would I use one?"
+- "Where am I?"
 - "How can I see what files and directories I have?"
+- "How can I move around?"
+- "How can I read and search files?"
 - "How can I use loops and scripts to my advantage?"
 objectives:
 - "Use the shell to navigate directories"
@@ -683,8 +686,8 @@ Let's write a more useful for loop to show us the first two lines of the fastq f
 ```bash
 for filename in SRR097977.fastq SRR098026.fastq
 do
-echo $filename
-head -n 2 ${filename}
+    echo $filename
+    head -n 2 ${filename}
 done
 ```
 
@@ -695,16 +698,24 @@ because they fit the pattern of ending with .fastq in the directory we've specif
 the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over. Finally, the
 word `done` ends the loop.
 
-After executing the loop, you should see each filename and then the first two lines of both fastq files printed to the terminal. Let's now create a loop that 
-will save this information to a file. Instead of typing each fastq file, we will use the wildcard symbol. That little star means everything.
+After executing the loop, you should see each filename and then the first two lines of both fastq files printed to the terminal.   Let's now create a loop that will save this information to a file. Note that we are using `>>` to append the text to our `seq_info.txt` file. If we used `>`, the `seq_info.txt` file would be rewritten every time the loop iterates, so it would only have text from the last variable used. Instead, `>>` adds to the end of the file.
 
 ```bash
-for filename in *.fastq
+for filename in SRR097977.fastq SRR098026.fastq
 do
+    echo $filename
     head -n 2 ${filename} >> seq_info.txt
 done
 ```
 
+Loops are power! You can repeat them with complex operations over thousands of files, but typing the thousands of files into your list of things in the pain. Here comes *, the wildcard. Instead of typing each fastq file name, we will use the wildcard symbol. That little star means everything.  Let's try it our simplest loop, just printing file names.
+
+```
+for filename in SRR097977.fastq SRR098026.fastq
+do
+    echo $filename
+done
+```
 
 When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using
 
@@ -712,8 +723,7 @@ When writing a loop, you will not be able to return to previous lines once you h
 
 If you notice a mistake that is going to prevent your loop for executing correctly.
 
-Note that we are using `>>` to append the text to our `seq_info.txt` file. If we used `>`, the `seq_info.txt` file would be rewritten
-every time the loop iterates, so it would only have text from the last variable used. Instead, `>>` adds to the end of the file.
+
 
 ### Extended for loops
 
