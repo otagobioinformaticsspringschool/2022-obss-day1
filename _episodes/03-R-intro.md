@@ -61,8 +61,8 @@ analyzing data in R:
 
  - **R is [open source](https://en.wikipedia.org/wiki/Open-source_software)**.
    This means R is free - an advantage if you are at an institution where you
-   have to pay for your own MATLAB or SAS license. Open source, is important to
-   your colleagues in parts of the world where expensive software in
+   have to pay for your own MATLAB or SAS license. Open source is important to
+   your colleagues in parts of the world where expensive software is
    inaccessible. It also means that R is actively developed by a community (see
    [r-project.org](https://www.r-project.org/)),
    and there are regular updates.
