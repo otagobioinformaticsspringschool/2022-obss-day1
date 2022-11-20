@@ -160,12 +160,12 @@ directory name to change our working directory.
 Lets use `cd` to navigate to our home directory using `~/` to represent our home.
 
 ```bash
-cd ~/
+cd ~
 pwd
 ```
 
 ~~~
-/home/ludovic.dutoit
+/home/ludovic.dutoit/
 ~~~
 {: .output}
 
@@ -187,9 +187,9 @@ Let's look at what is in your home directory:
 ls
 ```
 
-```
+~~~
 obss_2022
-```
+~~~
 {: .output}
 
 `obss_2022` is where we will be working out of for the entirity of the workshop. Lets change into that directory now using a relative path.
@@ -231,14 +231,14 @@ pwd
 You will see:
 
 ~~~
-/home/yourname
+/home/yourname/
 ~~~
 {: .output}
 
 Now enter the following command:
 
 ```bash
-cd /home/yourname/obss_2022/intro_bash/shell_data/
+cd obss_2022/intro_bash/shell_data/
 ```
 
 
@@ -252,7 +252,7 @@ cd
 You can also navigate to the `shell_data` directory using:
 
 ```bash
-cd obss_2022/intro_bash/shell_data
+cd obss_2022/intro_bash/shell_data/untrimmed_fastq
 ```
 
 These two commands have the same effect, they both take us to the `shell_data` directory.
