@@ -46,7 +46,7 @@ In this lesson you will learn how to use the command line interface to move arou
 Open up a terminal in Juypter.
 
 ```bash
-[matt.bixley@wbg004 ~/] $
+[ludovic.dutoit@wbl004 ~/] $
 ```
 
 
@@ -70,12 +70,12 @@ Here, the computer's response is `/home/yourname/`,
  specific Jupyter session running on NeSI.
 
 ```bash
-$ pwd
+pwd
 ```
 
 
 ~~~
-/home/matt.bixley/
+/home/ludovic.dutoit/
 ~~~
 {: .output}
 
@@ -84,7 +84,7 @@ Let's look at how our file system is organized. We can see what files and subdir
 which stands for "listing":
 
 ```bash
-$ ls
+ls
 ```
 
 
@@ -100,13 +100,13 @@ arranged neatly into columns.
 We can also add flags to our commands which will *modify* the behaviour of the command.
 
 ```bash
-$ ls -l
+ls -l
 ```
 
 ~~~
 total 3
-lrwxrwxrwx 1 matt.bixley matt.bixley 19 Oct 18 21:02 home -> /home/matt.bixley
-lrwxrwxrwx 1 matt.bixley matt.bixley 23 Oct 22 21:02 obss_2022 -> /nesi/project/nesi02659/obss_2022/users/matt.bixley/
+lrwxrwxrwx 1 ludovic.dutoit ludovic.dutoit 19 Oct 18 21:02 home -> /home/ludovic.dutoit
+lrwxrwxrwx 1 ludovic.dutoit ludovic.dutoit 23 Oct 22 21:02 obss_2022 -> /nesi/project/nesi02659/obss_2022/users/ludovic.dutoit/
 
 ~~~
 {: .output}
@@ -136,14 +136,11 @@ Here is an example of how the workshop directory hierarchy is set up:
 ```
 /
 |-- home/
-  |-- matt.bixley/
+  |-- ludovic.dutoit/
     |-- obss_2022/
-      |-- enda/
-      |-- genome_assembly/
-      |-- genomic_dna/
       |-- intro_bash/
       |-- intro_r/
-      `-- nanopore/
+      `-- intro_bash/
 
 ```
 
@@ -160,12 +157,12 @@ directory name to change our working directory.
 Lets use `cd` to navigate to our home directory using `~/` to represent our home.
 
 ```bash
-$ cd ~/
-$ pwd
+cd ~/
+pwd
 ```
 
 ~~~
-/home/matt.bixley
+/home/ludovic.dutoit
 ~~~
 {: .output}
 
@@ -174,10 +171,10 @@ $ pwd
 
 
 This is the full name of your home directory. This tells you that you
-are in a directory called `matt.bixley`, which sits inside a directory called
+are in a directory called `ludovic.dutoit`, which sits inside a directory called
 `home` which sits inside the very top directory in the hierarchy. The
 very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*. So, to summarize: `matt.bixley` is a
+referred to as the *root directory*. So, to summarize: `ludovic.dutoit` is a
 directory in `home` which is a directory in `/` (_root_). 
 
 
@@ -202,11 +199,11 @@ We can make the `ls` output from above, more comprehensible by using the **flag*
 which tells `ls` to add a trailing `/` to the names of directories:
 
 ```bash
-$ ls -F
+ls -F
 ```
 
 ~~~
-edna/  genome_assembly/  genomic_dna/  intro_bash/  intro_r/  nanopore/
+genomic_dna/  intro_bash/  intro_r/
 ~~~
 {: .output}
 
@@ -217,15 +214,15 @@ there are no decorations, it's a file.
 
 
 ~~~
-/home/matt.bixley/obss_2022
+/home/ludovic.dutoit/obss_2022
 ~~~
 {: .output}
 
 We have a special command to tell the computer to move us back or up one directory level. 
 
 ```bash
-$ cd ..
-$ pwd
+cd ..
+pwd
 ```
 
 You will see:
@@ -238,7 +235,7 @@ You will see:
 Now enter the following command:
 
 ```bash
-$ cd /home/yourname/obss_2022/intro_bash/shell_data/
+cd /home/yourname/obss_2022/intro_bash/shell_data/
 ```
 
 
@@ -246,13 +243,13 @@ This jumps forward multiple levels to the `shell_data` directory.
 Now go back to the home directory with `cd` or `cd ~`
 
 ```bash
-$ cd
+cd
 ```
 
 You can also navigate to the `shell_data` directory using:
 
 ```bash
-$ cd obss_2022/intro_bash/shell_data
+cd obss_2022/intro_bash/shell_data
 ```
 
 These two commands have the same effect, they both take us to the `shell_data` directory.
@@ -278,7 +275,7 @@ contents using the program `cat`.
 Enter the following command from within the `untrimmed_fastq` directory:
 
 ```bash
-$ cat SRR098026.fastq
+cat SRR098026.fastq
 ```
 
 This will print out all of the contents of the `SRR098026.fastq` to the screen.
@@ -286,7 +283,7 @@ This will print out all of the contents of the `SRR098026.fastq` to the screen.
 Enter the following command:
 
 ```bash
-$ less SRR097977.fastq
+less SRR097977.fastq
 ```
 
 Some navigation commands in `less`:
@@ -312,7 +309,7 @@ The commands are `head` and `tail` and they let you look at
 the beginning and end of a file, respectively.
 
 ```bash
-$ head SRR098026.fastq
+head SRR098026.fastq
 ```
 
 
@@ -331,7 +328,7 @@ NNNNNNNNNNNNNNNNANNNNNNNNNNNNNNNNNN
 {: .output}
 
 ```bash
-$ tail SRR098026.fastq
+tail SRR098026.fastq
 ```
 
 
@@ -353,7 +350,7 @@ The `-n` option to either of these commands can be used to print the
 first or last `n` lines of a file. 
 
 ```bash
-$ head -n 1 SRR098026.fastq
+head -n 1 SRR098026.fastq
 ```
 
 
@@ -363,7 +360,7 @@ $ head -n 1 SRR098026.fastq
 {: .output}
 
 ```bash
-$ tail -n 1 SRR098026.fastq
+tail -n 1 SRR098026.fastq
 ```
 
 
@@ -385,14 +382,14 @@ directory or file name.
 Return to the `intro_bash` directory:
 
 ~~~
-$ cd ~/obss_2022/intro_bash
+cd ~/obss_2022/intro_bash
 ~~~
 {: .bash}
 
 then enter:
 
 ~~~
-$ cd she<tab>
+cd she<tab>
 ~~~
 {: .bash}
 
@@ -402,8 +399,8 @@ The shell will fill in the rest of the directory name for
 Now change directories to `untrimmed_fastq` in `shell_data`
 
 ~~~
-$ cd shell_data
-$ cd untrimmed_fastq
+cd shell_data
+cd untrimmed_fastq
 ~~~
 {: .bash}
 
@@ -415,7 +412,7 @@ For example, if we now try to list the files which names start with `SR`
 by using tab complete:  
 
 ~~~
-$ ls SR<tab>
+ls SR<tab>
 ~~~
 {: .bash}
 
@@ -424,7 +421,7 @@ the directory begin with this prefix. When you hit
 <kbd>Tab</kbd> again, the shell will list the possible choices.
 
 ~~~
-$ ls SRR09<tab><tab>
+ls SRR09<tab><tab>
 ~~~
 {: .bash}
 
@@ -447,8 +444,8 @@ First, let's make a copy of one of our FASTQ files using the `cp` command.
 Navigate to the `shell_data/untrimmed_fastq` directory and enter:
 
 ```bash
-$ cp SRR098026.fastq SRR098026-copy.fastq
-$ ls -F
+cp SRR098026.fastq SRR098026-copy.fastq
+ls -F
 ```
 
 
@@ -463,7 +460,7 @@ The `mkdir` command is used to make a directory. Enter `mkdir`
 followed by a space, then the directory name you want to create:
 
 ```bash
-$ mkdir backup
+mkdir backup
 ```
 
 ## Moving
@@ -472,8 +469,8 @@ We can now move our backup file to this directory. We can
 move files around using the command `mv`:
 
 ```bash
-$ mv SRR098026-copy.fastq backup/
-$ ls backup
+mv SRR098026-copy.fastq backup/
+ls backup
 ```
 
 ~~~
@@ -484,9 +481,9 @@ SRR098026-copy.fastq
 The `mv` command is also how you rename files. Let's rename this file to make it clear that this is a backup:
 
 ```bash
-$ cd backup
-$ mv SRR098026-copy.fastq SRR098026-backup.fastq
-$ ls
+cd backup
+mv SRR098026-copy.fastq SRR098026-backup.fastq
+ls
 ```
 
 
@@ -502,7 +499,7 @@ We discussed in a previous section how to look at a file using `less` and `head`
 search within files without even opening them, using `grep`. We can then send what we find to somewhere else.
 
 ```bash
-$ cd ~/obss_2022/intro_bash/shell_data/untrimmed_fastq
+cd ~/obss_2022/intro_bash/shell_data/untrimmed_fastq
 ```
 
 
@@ -510,7 +507,7 @@ Suppose we want to see how many reads in our file have really bad segments conta
 Let's search for the string NNNNNNNNNN in the SRR098026 file:
 
 ```bash
-$ grep NNNNNNNNNN SRR098026.fastq
+grep NNNNNNNNNN SRR098026.fastq
 ```
 
 One of the sets of lines returned by this command is: `CNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN`.
@@ -535,7 +532,7 @@ each match. The `-A` argument returns a specific number of lines after each matc
 matching line, so we add `-B1 -A2` to our grep command:
 
 ```bash
-$ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq
+grep -B1 -A2 NNNNNNNNNN SRR098026.fastq
 ```
 
 Instead of the found text spilling onto the screen, it would be useful to be able to send it to a file so that we could browse through it in a controlled manner e.g. using `less`.
@@ -546,30 +543,44 @@ in our FASTQ files that contain
 'NNNNNNNNNN' to another file called `bad_reads.txt`.
 
 ```bash
-$ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.txt
+grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.txt
 ```
 
 The UNIX shell comes with many useful programs, once such one is `wc` which does a _word count_ on a file.
 
-We can then see how many bad reads we have.
+We can then check how many lines we have.
 
 ```bash
-$ wc -l bad_reads.txt
+wc -l bad_reads.txt
 ```
-
-
-~~~
-537 bad_reads.txt
-~~~
-{: .output}
-
 
 > ## Help and Manuals
 > You can find out what flags are available to most UNIX programs by using the `--help` flag. Or you can use the in-built manual by using `man <program>`, e.g. `man wc` will let you find out what the `-l` flag does.
 {: .callout}
 
-We created the files to store the reads and then counted the lines in 
-the file to see how many reads matched our criteria. There's a way to do this, however, that
+~~~
+537 bad_reads.txt
+~~~
+
+Wait, but that is not a multiple of four? Let's have a look at this file with 'less'
+
+```
+less bad_reads.txt
+```
+
+use `:q` to leave. `grep` added a little `--` in between. We can count the number of reads because every read start with an ID, starting with the symbol `@`. We can use grep to count the number of `@`, using the "-c" for count parameter.
+
+```
+grep -c @ bad_reads.txt
+```
+
+
+~~~
+134
+~~~
+{: .output}
+
+We created the files to store the reads and then counted the bad reads using two different grep commands to see how many reads matched our criteria. There's a way to do this, however, that
 doesn't require us to create these intermediate files - the pipe command (`|`).
 
 This is probably not a key on
@@ -584,7 +595,7 @@ look at it, like we can with `less`. Well it turns out that we can! We can redir
 from our `grep` call through the `less` command.
 
 ```bash
-$ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq | wc -l 
+grep -B1 -A2 NNNNNNNNNN SRR098026.fastq | wc -l 
 ```
 
 
@@ -594,28 +605,15 @@ $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq | wc -l
 A variable is a method to store information eg a list, and use it again (or several times) without having to write the list out.
 
 ```bash
-$ foo=abc
-$ echo foo is $foo
+foo=abc
+echo foo is $foo
 ```
-
 
 ~~~
 foo is abc
 ~~~
 {: .output}
 
-
-We can add to a variable with curly brackets `{}`
-
-```bash
-$ echo foo is ${foo}EFG
-```
-
-
-~~~
-foo is abcEFG
-~~~
-{: .output}
 
 ---
 ## Writing for loops
@@ -631,18 +629,63 @@ the commands inside the loop are executed, before moving on to the next item in 
 the variable's value by putting `$` in front of it. The `$` tells the shell interpreter to treat the **variable**
 as a variable name and substitute its value in its place, rather than treat it as text or an external command. 
 
-Let's write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven’t finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
 
 ```bash
-$ cd ../untrimmed_fastq/
+cd ../untrimmed_fastq/
 ```
 
 
+```
+for thing in list_of_things
+do
+    operation_using $thing    # Indentation within the loop is not required, but aids legibility
+done
+```
+
+```
+for fruit in banana lemon orange
+do
+    echo $fruit
+done
+```
+
+
+~~~
+banana
+lemon
+orange
+~~~
+{: .output}
+
+In that example, fruit becomes each thing in the lit in order. First, it becomes banana, the loop is ran and banana is printed. Then fruit becomes lemon, the loop is run and lemon is printed. Finally, the same happen with orange. After orange, the loop has exhausted the loop and the command is over.
+
+We ran a loop over a list of fruits using a variable called fruit. That makes perfect sense But the variable is arbitrary, it does not have to make sense.
+
+
+```
+for friend in zucchini gecko kowhai
+do
+echo $friend
+done
+```
+
+~~~
+zucchini
+gecko
+kowhai
+~~~
+{: .output}
+
+
+Let's write a more useful for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven’t finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
+
+
 ```bash
-$ for filename in *.fastq
-> do
-> head -n 2 ${filename}
-> done
+for filename in SRR097977.fastq SRR098026.fastq
+do
+echo $filename
+head -n 2 ${filename}
+done
 ```
 
 
@@ -652,14 +695,14 @@ because they fit the pattern of ending with .fastq in the directory we've specif
 the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over. Finally, the
 word `done` ends the loop.
 
-After executing the loop, you should see the first two lines of both fastq files printed to the terminal. Let's create a loop that 
-will save this information to a file.
+After executing the loop, you should see each filename and then the first two lines of both fastq files printed to the terminal. Let's now create a loop that 
+will save this information to a file. Instead of typing each fastq file, we will use the wildcard symbol. That little star means everything.
 
 ```bash
-$ for filename in *.fastq
-> do
-> head -n 2 ${filename} >> seq_info.txt
-> done
+for filename in *.fastq
+do
+    head -n 2 ${filename} >> seq_info.txt
+done
 ```
 
 
@@ -677,7 +720,7 @@ every time the loop iterates, so it would only have text from the last variable 
 `basename` is a function in UNIX that is helpful for removing a uniform part of a name from a list of files. In this case, we will use basename to remove the `.fastq` extension from the files that we’ve been working with. 
 
 ```bash
-$ basename SRR097977.fastq .fastq
+basename SRR097977.fastq .fastq
 ```
 
 
@@ -691,9 +734,8 @@ SRR097977
 If we try the same thing but use `.fasta` as the file extension instead, nothing happens. This is because basename only works when it exactly matches a string in the file.
 
 ```bash
-$ basename SRR097977.fastq .fasta
+basename SRR097977.fastq .fasta
 ```
-
 
 ~~~
 SRR097977.fastq
@@ -705,7 +747,7 @@ Basename is really powerful when used in a for loop. It allows to access just th
 Inside our for loop, we create a new name variable. We call the basename function inside the parenthesis, then give our variable name from the for loop, in this case `${filename}`, and finally state that `.fastq` should be removed from the file name. It’s important to note that we’re not changing the actual files, we’re creating a new variable called name. The line > echo $name will print to the terminal the variable name each time the for loop runs. Because we are iterating over two files, we expect to see two lines of output.
 
 ```bash
-$ for filename in *.fastq
+for filename in *.fastq
 > do
 > name=$(basename ${filename} .fastq)
 > echo ${name}
@@ -716,7 +758,7 @@ $ for filename in *.fastq
 One way this is really useful is to move files. Let's rename all of our .txt files using `mv` so that they have the years on them, which will document when we created them. 
 
 ```bash
-$ for filename in *.txt
+for filename in *.txt
 > do
 > name=$(basename ${filename} .txt)
 > mv ${filename}  ${name}_2019.txt
@@ -742,8 +784,8 @@ Let's change our working directory to `~/obss_2022/intro_bash/shell_data/untrimm
 then run `nano` to create a file called `README.txt`:
 
 ~~~
-$ cd ~/shell_data/untrimmed_fastq
-$ nano README.txt
+cd ~/shell_data/untrimmed_fastq
+nano README.txt
 ~~~
 {: .bash}
 
@@ -829,7 +871,7 @@ One thing we will commonly want to do with sequencing results is pull out bad re
 We're going to create a new file to put this command in. We'll call it `bad-reads-script.sh`. The `sh` isn't required, but using that extension tells us that it's a shell script.
 
 ~~~
-$ nano bad-reads-script.sh
+nano bad-reads-script.sh
 ~~~
 {: .bash}
 
@@ -852,7 +894,7 @@ Type your `grep` command into the file and save it as before. Be careful that yo
 Now comes the neat part. We can run this script. Type:
 
 ~~~
-$ bash bad-reads-script.sh
+bash bad-reads-script.sh
 ~~~
 {: .bash}
 
@@ -868,7 +910,7 @@ It will look like nothing happened, but now if you look at `scripted_bad_reads.t
 > > ## Solution
 > > 
 > >    ```
-> >   $ bash bad-reads-script.sh
+> >   bash bad-reads-script.sh
 > >   Script finished!
 > >   ```
 > >
@@ -882,7 +924,7 @@ We had to type `bash` because we needed to tell the computer what program to use
 First, let's look at the current permissions.
 
 ~~~
-$ ls -l bad-reads-script.sh
+ls -l bad-reads-script.sh
 ~~~
 {: .bash}
 
@@ -894,14 +936,14 @@ $ ls -l bad-reads-script.sh
 We see that it says `-rw-r--r--`. This shows that the file can be read by any user and written to by the file owner (you). We want to change these permissions so that the file can be executed as a program. We use the command `chmod` like we did earlier when we removed write permissions. Here we are adding (`+`) executable permissions (`+x`).
 
 ~~~
-$ chmod +x bad-reads-script.sh
+chmod +x bad-reads-script.sh
 ~~~
 {: .bash}
 
 Now let's look at the permissions again.
 
 ~~~
-$ ls -l bad-reads-script.sh
+ls -l bad-reads-script.sh
 ~~~
 {: .bash}
 
@@ -913,7 +955,7 @@ $ ls -l bad-reads-script.sh
 Now we see that it says `-rwxr-xr-x`. The `x`'s that are there now tell us we can run it as a program. So, let's try it! We'll need to put `./` at the beginning so the computer knows to look here in this directory for the program.
 
 ~~~
-$ ./bad-reads-script.sh
+./bad-reads-script.sh
 ~~~
 {: .bash}
 
